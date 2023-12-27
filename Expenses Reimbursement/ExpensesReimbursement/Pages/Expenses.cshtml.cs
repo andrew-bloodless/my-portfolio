@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExpensesReimbursement.Pages
 {
@@ -10,14 +11,14 @@ namespace ExpensesReimbursement.Pages
         [BindProperty]
         public Expense? Expense { get; set; }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            Expenses = dbContext.Expenses
+            Expenses = await dbContext.Expenses
                 .OrderByDescending(x => x.Date)
-                .ToArray();
+                .ToArrayAsync();
         }
 
-        public IActionResult OnPost() 
+        public async Task<IActionResult> OnPostAsync() 
         {
             if (!ModelState.IsValid) 
             {
@@ -27,20 +28,20 @@ namespace ExpensesReimbursement.Pages
             if (Expense != null)
             {
                 dbContext.Expenses.Add(Expense);
-                dbContext.SaveChanges();
+                await dbContext.SaveChangesAsync();
             }
 
             return RedirectToPage();
         }
 
-        public IActionResult OnPostDelete(int id)
+        public async Task<IActionResult> OnPostDeleteAsync(int id)
         {
             var expense = dbContext.Expenses.Find(id);
 
             if (expense != null)
             {
                 dbContext.Expenses.Remove(expense);
-                dbContext.SaveChanges();
+                await dbContext.SaveChangesAsync();
             }
 
             return RedirectToPage();
