@@ -6,7 +6,7 @@ namespace ExpensesReimbursement.Pages
 {
     public class ExpensesModel(ExpensesDBContext dbContext) : PageModel
     {
-        public IEnumerable<Expense> Expenses;
+        public IEnumerable<Expense>? Expenses;
 
         [BindProperty]
         public Expense? Expense { get; set; }

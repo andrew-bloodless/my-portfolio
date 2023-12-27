@@ -34,6 +34,7 @@
                             @expense.Price
                         </td>
                         <td>
+                            <a asp-page="./Edit" asp-route-id="@expense.Id">Edit</a> |
                             <button type="submit" asp-page-handler="delete" asp-route-id="@expense.Id">Delete</button>
                         </td>
                     </tr>
