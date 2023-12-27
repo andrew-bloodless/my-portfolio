@@ -18,22 +18,6 @@ namespace ExpensesReimbursement.Pages
                 .ToArrayAsync();
         }
 
-        public async Task<IActionResult> OnPostAsync() 
-        {
-            if (!ModelState.IsValid) 
-            {
-                return Page();
-            }
-
-            if (Expense != null)
-            {
-                dbContext.Expenses.Add(Expense);
-                await dbContext.SaveChangesAsync();
-            }
-
-            return RedirectToPage();
-        }
-
         public async Task<IActionResult> OnPostDeleteAsync(int id)
         {
             var expense = dbContext.Expenses.Find(id);

@@ -1,45 +1,39 @@
 ﻿@page
 @model ExpensesReimbursement.Pages.ExpensesModel
 @{
-    <p>Enter new expense:</p>
-
-    <form method="post">
-        <div>
-            <input type="datetime" name="Date" placeholder="Date">
-            <input type="text" name="Description" placeholder="Description">
-            <input type="number" name="Price" placeholder="Price">
-
-            <button type="submit">Add</button>
-        </div>
-
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach(Expense expense in Model.Expenses) {
-                    <tr>
-                        <td>
-                            @expense.Date
-                        </td>
-                        <td>
-                            @expense.Description
-                        </td>
-                        <td>
-                            @expense.Price
-                        </td>
-                        <td>
-                            <a asp-page="./Edit" asp-route-id="@expense.Id">Edit</a> |
-                            <button type="submit" asp-page-handler="delete" asp-route-id="@expense.Id">Delete</button>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </form>
+    ViewData["Title"] = "Expenses";
 }
+
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Expense expense in Model.Expenses)
+            {
+                <tr>
+                    <td>
+                        @expense.Date
+                    </td>
+                    <td>
+                        @expense.Description
+                    </td>
+                    <td>
+                        @expense.Price
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@expense.Id">Edit</a> |
+                        <button type="submit" asp-page-handler="delete" asp-route-id="@expense.Id">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
+<a asp-page="Create">Create new expense</a>
