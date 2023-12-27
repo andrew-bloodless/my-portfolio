@@ -3,42 +3,44 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ExpensesReimbursement.Pages
 {
-    public class ExpensesModel : PageModel
+    public class ExpensesModel(ExpensesDBContext dbContext) : PageModel
     {
-        private readonly ExpensesDBContext _dbContext;
         public IEnumerable<Expense> Expenses;
 
-        public ExpensesModel(ExpensesDBContext dbContext)
-        {
-            this._dbContext = dbContext;
-        }
-
         [BindProperty]
-        public Expense NewExpense { get; set; }
+        public Expense? Expense { get; set; }
 
         public void OnGet()
         {
-            this.Expenses = this._dbContext.Expenses
+            Expenses = dbContext.Expenses
                 .OrderByDescending(x => x.Date)
                 .ToArray();
         }
 
         public IActionResult OnPost() 
         {
-            this._dbContext.Expenses.Add(NewExpense);
-            this._dbContext.SaveChanges();
+            if (!ModelState.IsValid) 
+            {
+                return Page();
+            }
+
+            if (Expense != null)
+            {
+                dbContext.Expenses.Add(Expense);
+                dbContext.SaveChanges();
+            }
 
             return RedirectToPage();
         }
 
         public IActionResult OnPostDelete(int id)
         {
-            var expense = this._dbContext.Expenses.Find(id);
+            var expense = dbContext.Expenses.Find(id);
 
             if (expense != null)
             {
-                this._dbContext.Expenses.Remove(expense);
-                _dbContext.SaveChanges();
+                dbContext.Expenses.Remove(expense);
+                dbContext.SaveChanges();
             }
 
             return RedirectToPage();

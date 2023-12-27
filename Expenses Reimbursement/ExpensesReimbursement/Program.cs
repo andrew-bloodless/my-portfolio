@@ -1,10 +1,12 @@
 using ExpensesReimbursement;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddDbContext<ExpensesDBContext>();
+builder.Services.AddDbContext<ExpensesDBContext>(optionsAction => 
+    optionsAction.UseInMemoryDatabase("ExpensesDB"));
 
 var app = builder.Build();
 

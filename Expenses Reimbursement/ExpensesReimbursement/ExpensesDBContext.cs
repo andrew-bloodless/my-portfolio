@@ -2,12 +2,7 @@
 
 namespace ExpensesReimbursement;
 
-public class ExpensesDBContext : DbContext
+public class ExpensesDBContext(DbContextOptions<ExpensesDBContext> options) : DbContext(options)
 {
-    public DbSet <Expense> Expenses { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseInMemoryDatabase("ExpensesDB");
-    }
+    public DbSet <Expense> Expenses => Set<Expense>();
 }
