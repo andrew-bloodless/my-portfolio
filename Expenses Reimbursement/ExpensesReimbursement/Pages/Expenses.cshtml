@@ -2,35 +2,40 @@
 @model ExpensesReimbursement.Pages.ExpensesModel
 @{
     <form method="post">
-        <input type="datetime" name="Date" placeholder="Date">
-        <input type="text" name="Description" placeholder="Description">
-        <input type="number" name="Price" placeholder="Price">
+        <div>
+            <input type="datetime" name="Date" placeholder="Date">
+            <input type="text" name="Description" placeholder="Description">
+            <input type="number" name="Price" placeholder="Price">
 
-        <button type="submit">Add</button>
-    </form>
+            <button type="submit">Add</button>
+        </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Description</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach(Expense expense in Model.Expenses) {
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>
-                        @expense.Date
-                    </td>
-                    <td>
-                        @expense.Description
-                    </td>
-                    <td>
-                        @expense.Price
-                    </td>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Price</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach(Expense expense in Model.Expenses) {
+                    <tr>
+                        <td>
+                            @expense.Date
+                        </td>
+                        <td>
+                            @expense.Description
+                        </td>
+                        <td>
+                            @expense.Price
+                        </td>
+                        <td>
+                            <button type="submit" asp-page-handler="delete" asp-route-id="@expense.Id">Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
 }
