@@ -1,5 +1,5 @@
 ﻿@page
-@model ExpensesReimbursement.Pages.ExpensesModel
+@model ExpensesReimbursement.Pages.Expenses.IndexModel
 @{
     ViewData["Title"] = "Expenses";
 }
@@ -29,7 +29,7 @@
                     </td>
                     <td>
                         <a asp-page="./Edit" asp-route-id="@expense.Id">Edit</a> |
-                        <button type="submit" asp-page-handler="delete" asp-route-id="@expense.Id">Delete</button>
+                        <button type="submit" asp-page-handler="delete" asp-route-id="@expense.Id" class="btn btn-primary">Delete</button>
                     </td>
                 </tr>
             }

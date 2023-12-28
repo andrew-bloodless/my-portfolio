@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 
-namespace MyApp.Namespace
+namespace ExpensesReimbursement.Pages.Expenses
 {
     public class EditModel(ExpensesDBContext dBContext) : PageModel
     {
@@ -49,14 +49,14 @@ namespace MyApp.Namespace
                     {
                         return NotFound();
                     }
-                    else 
-                    { 
-                        throw; 
+                    else
+                    {
+                        throw;
                     }
                 }
             }
 
-            return RedirectToPage("Expenses");
+            return RedirectToPage("./Index");
         }
     }
 }

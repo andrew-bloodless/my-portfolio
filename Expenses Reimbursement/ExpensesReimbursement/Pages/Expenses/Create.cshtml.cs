@@ -2,7 +2,7 @@ using ExpensesReimbursement;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace MyApp.Namespace
+namespace ExpensesReimbursement.Pages.Expenses
 {
     public class CreateModel(ExpensesDBContext dBContext) : PageModel
     {
@@ -22,7 +22,7 @@ namespace MyApp.Namespace
                 await dBContext.SaveChangesAsync();
             }
 
-            return RedirectToPage("Expenses");
+            return RedirectToPage("./Index");
         }
     }
 }

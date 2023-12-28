@@ -2,9 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace ExpensesReimbursement.Pages
+namespace ExpensesReimbursement.Pages.Expenses
 {
-    public class ExpensesModel(ExpensesDBContext dbContext) : PageModel
+    public class IndexModel(ExpensesDBContext dbContext) : PageModel
     {
         public IEnumerable<Expense>? Expenses;
 
