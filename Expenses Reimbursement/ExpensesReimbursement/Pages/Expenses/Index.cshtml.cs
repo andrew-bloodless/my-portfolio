@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExpensesReimbursement.Pages.Expenses
 {
+    [Authorize]
     public class IndexModel(ExpensesDBContext dbContext) : PageModel
     {
         public IEnumerable<Expense>? Expenses;
