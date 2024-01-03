@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<ExpensesDBContext>(optionsAction => 
-    optionsAction.UseInMemoryDatabase("ExpensesDB"));
+    optionsAction.UseSqlite("Data Source=ExpensesDB.db"));
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ExpensesDBContext>().AddDefaultTokenProviders();

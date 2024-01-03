@@ -14,5 +14,5 @@ public class Expense
     
     [Required]
     [Range(double.Epsilon, int.MaxValue, ErrorMessage = "Price should greater than zero.")]
-    public decimal? Price { get; set; }
+    public decimal Price { get; set; }
 }
