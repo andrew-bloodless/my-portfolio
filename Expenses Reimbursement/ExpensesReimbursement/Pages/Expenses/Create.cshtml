@@ -7,20 +7,22 @@
 <div class="row">
     <div class="col-md-4">
         <form method="post">
-            <div class="form-group">
-                <span asp-validation-for="Expense!.Date" class="text-danger"></span>
-                <label asp-for="Expense!.Date" class="control-label"></label>
+            <div class="form-group mb-2">
+                <label asp-for="Expense!.Date" class="control-label" required></label>
                 <input asp-for="Expense!.Date" class="form-control" />
-                
-                <span asp-validation-for="Expense!.Description" class="text-danger"></span>
-                <label asp-for="Expense!.Description" class="control-label"></label>
+                <span asp-validation-for="Expense!.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-2">
+                <label asp-for="Expense!.Description" class="control-label" required></label>
                 <input asp-for="Expense!.Description" class="form-control" />
-                
-                <span asp-validation-for="Expense!.Price" class="text-danger"></span>
+                <span asp-validation-for="Expense!.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-2">
                 <label asp-for="Expense!.Price" class="control-label"></label>
                 <input asp-for="Expense!.Price" class="form-control" />
+                <span asp-validation-for="Expense!.Price" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-2">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
