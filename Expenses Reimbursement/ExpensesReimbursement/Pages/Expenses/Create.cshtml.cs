@@ -1,4 +1,3 @@
-using ExpensesReimbursement;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -22,7 +21,7 @@ namespace ExpensesReimbursement.Pages.Expenses
                 await dBContext.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("Index");
         }
     }
 }

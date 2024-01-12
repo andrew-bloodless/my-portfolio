@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +17,12 @@ namespace ExpensesReimbursement.Pages.Expenses
             Expenses = await dbContext.Expenses
                 .OrderByDescending(x => x.Date)
                 .ToArrayAsync();
+        }
+
+
+        public IActionResult OnPostCreate()
+        {
+            return RedirectToPage("Create");
         }
 
         public async Task<IActionResult> OnPostDeleteAsync(int id)

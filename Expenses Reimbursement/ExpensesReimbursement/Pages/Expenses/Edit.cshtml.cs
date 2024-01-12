@@ -56,7 +56,7 @@ namespace ExpensesReimbursement.Pages.Expenses
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("Index");
         }
     }
 }
